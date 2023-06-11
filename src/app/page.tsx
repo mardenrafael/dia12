@@ -27,18 +27,18 @@ export default function Home() {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [texts]);
 
   useEffect(() => {
     if (messages.length != 0) {
       texts.shift();
     }
-  }, [messages]);
+  }, [messages, texts]);
 
   return (
-    <main className="bg-red-200 flex h-full w-screen justify-center items-center">
+    <main className="bg-red-200 flex h-screen w-screen justify-center items-center">
       <section className="border-2 box-content border-red-400 rounded-lg w-1/2 h-4/5 p-2">
-        <div className="flex flex-col gap-4 h-full">
+        <div className="flex flex-col gap-4 h-full overflow-y-scroll">
           {messages.map(({ text }, idx) => {
             if (text == undefined) {
               return (
